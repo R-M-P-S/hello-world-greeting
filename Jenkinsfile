@@ -15,7 +15,7 @@ node ('docker') {
     junit '**/target/failsafe-reports/TEST-*.xml'
     archive 'target/*.jar'
   }
-  Stage ('publish') {
+  stage ('publish') {
     def server = Artifactory.server 'Default Artifactory Server'
     def uploadSpec = """ {
       "files": [
