@@ -13,7 +13,7 @@ node ('docker') {
   stage ('Integration Test') {
     sh 'mvn clean verify -Dsurefire.skip=true';
     junit '**/target/failsafe-reports/TEST-*.xml'
-    archive 'target/*.jar'
+    archiveArtifacts 'target/*.jar'
   }
   stage ('publish') {
     def server = Artifactory.server 'Default Artifactory Server'
