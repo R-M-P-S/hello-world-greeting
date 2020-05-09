@@ -41,10 +41,7 @@ node ('docker_pt') {
   }
   stage ('Deploy') {
     unstash 'binary'
-    sh '''
-      chmod -R 777 home/jenkins/tomcat/webapps/
-      cp target/hello-0.0.1.war home/jenkins/tomcat/webapps/
-    '''
+    sh 'cp target/hello-0.0.1.war home/jenkins/tomcat/webapps/';
   }
   stage ('Performance Testing') {
     sh '''
