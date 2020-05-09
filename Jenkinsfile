@@ -42,7 +42,7 @@ node ('docker_pt') {
   stage ('Deploy') {
     unstash 'binary'
     sh '''
-      sudo chmod -R 777 home/jenkins/tomcat/webapps/
+      chmod -R 777 home/jenkins/tomcat/webapps/
       cp target/hello-0.0.1.war home/jenkins/tomcat/webapps/
     '''
   }
