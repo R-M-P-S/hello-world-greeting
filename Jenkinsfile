@@ -49,7 +49,7 @@ node ('docker_pt') {
       ./jmeter.sh -n -t $WORKSPACE/src/pt/Hello_World_Test_Plan.jmx -l $WORKSPACE/test_report.jtl
     '''
 
-    step([$class: 'ArtifactArchiver',archiveArtifacts: '**/*.jtl'])
+    step([$class: 'ArtifactArchiver',artifacts: '**/*.jtl'])
   }
   stage ('Promote Build in Artifactory') {
     WithCredentials([usernameColonPassword(credentialsId: 'artifactory-account', variable: 'credentials')]) {
